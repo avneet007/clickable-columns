@@ -3221,16 +3221,32 @@ var m = [20, 20, 20, 20],
 
       nodeEnter.append("svg:circle")
           .attr("r", 1e-6)
-          .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+          .style("fill", function(d) { 
+
+             console.log(d)
+            return d._children ? "lightsteelblue" : "#fff";
+
+
+             });
 
       nodeEnter.append("svg:text")
           //.attr("y", function(d) { return d.children || d._children ? -10 : 10; })
           //.attr("dx", ".35em")
-          .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
+          .attr("x", function(d) { 
+            return d.children || d._children ? -10 : 10;
+
+             })
           .attr("dy", ".35em")
           .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
           .text(function(d) { return d.name; })
-          .style("fill-opacity", 1e-6);
+          .style("fill-opacity", 1e-6)
+          .style("font-weight", function(d) { 
+ 
+              if(d.name=="flat" || d.name=="smooth" || d.name=="cuttable" || d.name=="water resistant" || d.name=="cost effective" ||  d.name=="decorative" || d.name=="dimensionally stable" || d.name=="durable"){
+                return 'bold'
+                }
+
+             })
 
       // Transition nodes to their new position.
       var nodeUpdate = node.transition()
